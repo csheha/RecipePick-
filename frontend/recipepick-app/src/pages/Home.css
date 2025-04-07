@@ -1,0 +1,157 @@
+.hero_container {
+  display: flex;
+  width: 100%;
+  height: 900px;
+  padding: 0px 64px;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+  margin-top: 70px;
+  background-color: #f7e1b8;
+}
+
+/*Hero section left side*/
+.hero-left {
+  display: flex;
+  padding-right: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1;
+  align-self: stretch;
+}
+.hero_heading {
+  align-self: stretch;
+}
+.hero_heading h1 {
+  font-family: Roboto;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+.hero_desc {
+  align-self: stretch;
+}
+
+.hero_desc p {
+  color: #817a73;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.hero_buttons_container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.explore_button {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--Color-Neutral-Darkest, #000);
+  background: #ff672a;
+  color: var(--Color-White, #fff);
+  /* Text/Regular/Normal */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+
+.loginsignup_button {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--Color-Neutral-Darkest, #000);
+  color: var(--Color-Neutral-Darkest, #000);
+  /* Text/Regular/Normal */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+
+/*Hero section right side*/
+.hero-right {
+  display: flex;
+  height: 900px;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+  overflow: hidden;
+} /* Column 1 - Move images upwards */
+.coloumn1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 0 0;
+  position: relative;
+  animation: moveUpwards 15s infinite linear; /* Apply the upwards animation */
+}
+
+/* Column 2 - Move images downwards */
+.coloumn2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 0 0;
+  position: relative;
+  animation: moveUpwards 15s infinite linear; /* Apply the downwards animation */
+}
+
+/* Animation to move the images upwards in a loop for column1 */
+/* Original Upwards movement */
+@keyframes moveUpwards {
+  0% {
+    transform: translateY(0); /* Start from the original position */
+  }
+  50% {
+    transform: translateY(-50%); /* Move the images up by 50% of their height */
+  }
+  100% {
+    transform: translateY(0); /* Return to the original position */
+  }
+}
+
+/* Opposite Downwards movement */
+@keyframes moveDownwards {
+  0% {
+    transform: translateY(0); /* Start from the original position */
+  }
+  50% {
+    transform: translateY(
+      50%
+    ); /* Move the images down by 50% of their height */
+  }
+  100% {
+    transform: translateY(0); /* Return to the original position */
+  }
+}
+
+/* Images inside columns */
+.foodimg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+  flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+/* Optional: Add hover effect to images for more dynamic movement */
+.hero-right:hover .foodimg {
+  transform: scale(1.05); /* Slight scale effect to make the images grow */
+}
