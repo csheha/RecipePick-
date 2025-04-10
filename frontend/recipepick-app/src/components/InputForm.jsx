@@ -1,29 +1,41 @@
 import React from "react";
 import "../styles/InputForm.css";
 import { useState } from "react";
+import axios from "axios";
 
-export default function InputForm() {
+export default function InputForm({ setIsOpen }) {
   //hooks to store email and password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //signup hook
   const [isSignup, setIsSignup] = useState(false);
+  //to handle error
+  const [error, setError] = useState("");
 
   // Function to handle form submission
-  const handleOnSubmit = () => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
+    let endpoint = isSignup ? "/signup" : "/login";
+    await axios
+      .post(`http://localhost:5000/user${endpoint}`, { email, password })
+      .then((res) => {
+        localStorage.setItem("token", res.data);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        setIsOpen();
+      })
+      .catch((data) => setError(data.response?.data?.error));
   };
 
   return (
     <>
       <div className="login-box">
         <p>{isSignup ? "Sign Up" : "Login"}</p>
-        <form>
+        <form onSubmit={handleOnSubmit}>
           <div className="user-box">
             <input
               type="email"
               className="input"
-              onChange={() => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <label>Email</label>
@@ -32,18 +44,20 @@ export default function InputForm() {
             <input
               type="password"
               className="input"
-              onChange={() => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <label>Password</label>
           </div>
-          <a href="#" type="submit">
+          <button type="submit" className="a">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            {isSignup ? "Sign Up" : "Login"}
-          </a>
+            Submit
+          </button>
+          <br />
+          {error != "" && <h6 className="error">{error}</h6>}
         </form>
         <p>
           {isSignup

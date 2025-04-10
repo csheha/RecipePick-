@@ -5,31 +5,32 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const userSignup = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: "Please fill all fields" });
+    }
 
-  if (!email || !password) {
-    return res.status(400).json({ message: "Please fill all fields" });
+    let existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
+    const hashPwd = await bcrypt.hash(password, 10);
+    const newUser = new User({ email, password: hashPwd });
+    await newUser.save(); // Save the new user to the database
+
+    const token = jwt.sign({ email, id: newUser._id }, process.env.SECRET_KEY);
+
+    return res.status(201).json({
+      message: "User created successfully",
+      token,
+      newUser,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-
-  let user = await user.findOne({ email });
-
-  if (user) {
-    return res.status(400).json({ message: "User already exists" });
-  }
-
-  // Hash password
-  const hashPwd = await bcrypt.hash(password, 10);
-  // Create new user
-  const newUser = new User({
-    email,
-    password: hashPwd,
-  });
-
-  //generate token
-  const token = jwt.sign({ email, id: newUser._id }, process.env.SECRET_KEY);
-  return res
-    .status(200)
-    .json({ message: "User created successfully", token, newUser });
 };
 
 const userLogin = async (req, res) => {

@@ -1,4 +1,5 @@
 import express from "express";
+import dotenv from "dotenv";
 
 import { userLogin, userSignup, getUser } from "../controllers/user.js";
 
@@ -7,6 +8,6 @@ dotenv.config();
 
 router.post("/signup", userSignup); //user signup
 router.post("/login", userLogin); //user login
-router.get("/user/:id", getUser); //get user by ID
+router.get("/:id", getUser); //get user by ID
 
 export default router;

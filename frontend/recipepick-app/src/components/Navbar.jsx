@@ -4,14 +4,28 @@ import "./Navbar.css";
 import Model from "./model";
 import InputForm from "./InputForm";
 import { useState } from "react";
-
+import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 export default function Navbar() {
   // model component open and close state
   const [isOpen, setIsOpen] = useState(false);
 
+  let token = localStorage.getItem("token");
+  const [isLogin, setIsLogin] = useState(token ? true : false);
+
+  useEffect(() => {
+    setIsLogin(token ? true : false);
+  }, [token]);
+
   //isOpen true or false -> check login function
   const checkLogin = () => {
-    setIsOpen(true);
+    if (token) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      setIsLogin(false);
+    } else {
+      setIsOpen(true);
+    }
   };
 
   return (
@@ -25,16 +39,27 @@ export default function Navbar() {
         </div>
         <nav className="nav_links_container">
           <ul className="nav_links">
-            <li className="nav_item">Home Recipes</li>
-            <li className="nav_item">My Recipes</li>
-            <li className="nav_item">Favorites</li>
-            <li className="nav_item">Blog</li>
+            <li className="nav_item">
+              <NavLink to="/">Home Recipes</NavLink>
+            </li>
+            <li className="nav_item" onClick={() => isLogin && setIsOpen(true)}>
+              {" "}
+              <NavLink to="/myRecipe">My Recipes</NavLink>
+            </li>
+            <li className="nav_item" onClick={() => isLogin && setIsOpen(true)}>
+              {" "}
+              <NavLink to="/favRecipe">Favorites</NavLink>
+            </li>
+            <li className="nav_item" onClick={() => isLogin && setIsOpen(true)}>
+              {" "}
+              <NavLink to="/blog">Blog</NavLink>
+            </li>
           </ul>
         </nav>
         <div className="login_signup_container">
           <button className="login_signup_box">
             <p className="text_loginsignup" onClick={checkLogin}>
-              Login / Signup
+              {isLogin ? "Logout" : "Login"}
             </p>
           </button>
         </div>
