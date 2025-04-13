@@ -155,3 +155,279 @@
 .hero-right:hover .foodimg {
   transform: scale(1.05); /* Slight scale effect to make the images grow */
 }
+
+/* 2nd section*/
+.container-recipe {
+  background-color: #f7e1b8;
+  padding-left: 64px;
+  padding-right: 64px;
+  padding-top: 112px;
+  padding-bottom: 80px;
+}
+.head-container {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+  background: linear-gradient(
+    90deg,
+    rgba(139, 69, 19, 0.73) 0%,
+    rgba(62, 30, 9, 0.82) 80%
+  );
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.head-left {
+  display: flex;
+  width: 768px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.tagline {
+  display: flex;
+  color: var(--Color-Scheme-1-Text, #000);
+  /* Text/Medium/Light */
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 150%; /* 27px */
+}
+.main-text {
+  align-self: stretch;
+}
+
+.main-text-h1 {
+  color: #ff672a;
+
+  /* Heading/Desktop/H1 */
+  font-family: Roboto;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 67.2px */
+}
+
+.desc-para {
+  align-self: stretch;
+}
+
+.desc-para-text {
+  /* Text/Medium/Normal */
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 150%; /* 27px */
+  color: var(--Color-Scheme-1-Text, #fff);
+}
+
+.head-right {
+  display: flex;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+  flex-direction: column;
+}
+
+/* From Uiverse.io by AkshatDaxini */
+.recipe-component .main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 1.8;
+  position: relative;
+  width: 300px;
+}
+
+#pizza {
+  background-color: transparent;
+  transform-origin: center center;
+  animation: rotate 45s linear infinite;
+  -webkit-animation: rotate 45s linear infinite;
+}
+
+#slice1 {
+  animation: slice1 4s ease-in-out infinite;
+  -webkit-animation: slice1 4s ease-in-out infinite;
+}
+
+#slice2 {
+  animation: slice2 4s ease-in-out infinite;
+  animation-delay: 1s;
+  -webkit-animation: slice2 4s ease-in-out infinite;
+}
+
+#slice3 {
+  animation: slice3 4s ease-in-out infinite;
+  animation-delay: 2s;
+  -webkit-animation: slice3 4s ease-in-out infinite;
+}
+
+#slice4 {
+  animation: slice4 4s ease-in-out infinite;
+  animation-delay: 3s;
+  -webkit-animation: slice4 4s ease-in-out infinite;
+}
+
+#slice5 {
+  animation: slice5 4s ease-in-out infinite;
+  animation-delay: 4s;
+  -webkit-animation: slice5 4s ease-in-out infinite;
+}
+
+#slice6 {
+  animation: slice6 4s ease-in-out infinite;
+  animation-delay: 5s;
+  -webkit-animation: slice6 4s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+@keyframes slice1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5%, 5%);
+    -webkit-transform: translate(5%, 5%);
+    -moz-transform: translate(5%, 5%);
+    -ms-transform: translate(5%, 5%);
+    -o-transform: translate(5%, 5%);
+  }
+}
+
+@keyframes slice2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0%, 7%);
+    -webkit-transform: translate(0%, 7%);
+    -moz-transform: translate(0%, 7%);
+    -ms-transform: translate(0%, 7%);
+    -o-transform: translate(0%, 7%);
+  }
+}
+
+@keyframes slice3 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5%, 5%);
+    -webkit-transform: translate(-5%, 5%);
+    -moz-transform: translate(-5%, 5%);
+    -ms-transform: translate(-5%, 5%);
+    -o-transform: translate(-5%, 5%);
+  }
+}
+
+@keyframes slice4 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5%, 0%);
+    -webkit-transform: translate(-5%, 0%);
+    -moz-transform: translate(-5%, 0%);
+    -ms-transform: translate(-5%, 0%);
+    -o-transform: translate(-5%, 0%);
+  }
+}
+
+@keyframes slice5 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0%, -3%);
+    -webkit-transform: translate(0%, -3%);
+    -moz-transform: translate(0%, -3%);
+    -ms-transform: translate(0%, -3%);
+    -o-transform: translate(0%, -3%);
+  }
+}
+
+@keyframes slice6 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5%, 0%);
+    -webkit-transform: translate(5%, 0%);
+    -moz-transform: translate(5%, 0%);
+    -ms-transform: translate(5%, 0%);
+    -o-transform: translate(5%, 0%);
+  }
+}
+
+.share-button-box {
+  display: flex;
+  padding: 8px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-button {
+  display: flex;
+  background-color: #b06b87;
+  border: 1px solid var(--Color-Neutral-Darkest, #000);
+  background: linear-gradient(0deg, #ff672a 0%, #ff672a 100%),
+    linear-gradient(0deg, #196239 0%, #196239 100%),
+    var(--Color-Neutral-Darkest, #000);
+  color: var(--Color-White, #fff);
+  /* Text/Regular/Normal */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}

@@ -42,15 +42,24 @@ export default function Navbar() {
             <li className="nav_item">
               <NavLink to="/">Home Recipes</NavLink>
             </li>
-            <li className="nav_item" onClick={() => isLogin && setIsOpen(true)}>
+            <li
+              className="nav_item"
+              onClick={() => !isLogin && setIsOpen(true)}
+            >
               {" "}
               <NavLink to="/myRecipe">My Recipes</NavLink>
             </li>
-            <li className="nav_item" onClick={() => isLogin && setIsOpen(true)}>
+            <li
+              className="nav_item"
+              onClick={() => !isLogin && setIsOpen(true)}
+            >
               {" "}
               <NavLink to="/favRecipe">Favorites</NavLink>
             </li>
-            <li className="nav_item" onClick={() => isLogin && setIsOpen(true)}>
+            <li
+              className="nav_item"
+              onClick={() => !isLogin && setIsOpen(true)}
+            >
               {" "}
               <NavLink to="/blog">Blog</NavLink>
             </li>
