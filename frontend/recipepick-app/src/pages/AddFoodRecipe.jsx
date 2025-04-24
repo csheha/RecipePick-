@@ -31,6 +31,7 @@ export default function AddFoodRecipe() {
       .post("http://localhost:5000/recipe", recipeData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: "bearer " + localStorage.getItem("token"),
         },
       })
       .then(() => navigate("/"));

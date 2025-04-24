@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import food1 from "../assets/food1.jpg";
 import food2 from "../assets/food2.jpg";
 import food3 from "../assets/food3.jpeg";
 import food4 from "../assets/food4.jpg";
 import { useNavigate } from "react-router-dom";
+import Model from "../components/Model";
+import InputForm from "../components/InputForm";
 
 export default function Home() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const addRecipe = () => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      navigate("/addRecipe");
+    } else {
+      setIsOpen(true);
+    }
+  };
   return (
     <>
       <>
@@ -33,7 +45,7 @@ export default function Home() {
                 <span>Explore</span>
               </div>
               <div className="loginsignup_button">
-                <span>Login/Signup</span>
+                <span>Getting Started</span>
               </div>
             </div>
           </div>
@@ -373,35 +385,20 @@ export default function Home() {
                 </div>
               </div>
               <div className="share-button-box">
-                <button
-                  onClick={() => navigate("/addRecipe")}
-                  className="share-button"
-                >
+                <button onClick={addRecipe} className="share-button">
                   Share Your Recipe
                 </button>
               </div>
             </div>
           </div>
         </div>
+        {isOpen && (
+          <Model onClose={() => setIsOpen(false)}>
+            <InputForm setIsOpen={() => setIsOpen(false)}></InputForm>
+          </Model>
+        )}
+
         {/* recipe section */}
-        <div className="recipe-container">
-          <div className="container-box">
-            <div className="recipe-box">
-              <div className="img">{/**img */}</div>
-              <div className="title-main-box">
-                <div className="title-box">
-                  <span className="title">title</span>
-                </div>
-                <div className="time-box">
-                  <span className="time">time</span>
-                </div>
-              </div>
-              <div className="viewmore">
-                <button className="viewmore-button"></button>
-              </div>
-            </div>
-          </div>
-        </div>
       </>
     </>
   );

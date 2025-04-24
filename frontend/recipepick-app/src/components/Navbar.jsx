@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/logo.png";
 import "./Navbar.css";
-import Model from "./model";
+import Model from "../components/Model";
 import InputForm from "./InputForm";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -9,9 +9,9 @@ import { useEffect } from "react";
 export default function Navbar() {
   // model component open and close state
   const [isOpen, setIsOpen] = useState(false);
-
   let token = localStorage.getItem("token");
   const [isLogin, setIsLogin] = useState(token ? true : false);
+  let user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     setIsLogin(token ? true : false);
@@ -69,6 +69,7 @@ export default function Navbar() {
           <button className="login_signup_box">
             <p className="text_loginsignup" onClick={checkLogin}>
               {isLogin ? "Logout" : "Login"}
+              {user?.email ? `(${user?.email})` : ""}
             </p>
           </button>
         </div>

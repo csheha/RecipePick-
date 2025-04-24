@@ -8,13 +8,14 @@ import {
   deleteRecipe,
   upload,
 } from "../controllers/recipe.js";
+import verifyToken from "../Middleware/auth.js";
 
 const router = express.Router();
 dotenv.config();
 
 router.get("/", getRecipes); //Get all recipes
 router.get("/:id", getRecipe); //Get recipe by ID
-router.post("/", upload.single("file"), addRecipe); //Add recipe
+router.post("/", upload.single("file"), verifyToken, addRecipe); //Add recipe
 router.put("/:id", editRecipe); //Edit recipe by ID
 router.delete("/:id", deleteRecipe); //Delete recipe by ID
 

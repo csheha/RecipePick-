@@ -1,4 +1,5 @@
 import React from "react";
+import { BsStopwatchFill } from "react-icons/bs";
 
 export default function RecipeItems() {
   return (
@@ -8,6 +9,13 @@ export default function RecipeItems() {
         width="120px"
         height="100px"
       ></img>
+      <div className="title">{item.title}</div>
+      <div className="icons">
+        <div className="timer">
+          <BsStopwatchFill />
+          {item.time}{" "}
+        </div>
+      </div>
     </div>
   );
 }
