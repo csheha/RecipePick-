@@ -10,11 +10,11 @@ export default function Navbar() {
   // model component open and close state
   const [isOpen, setIsOpen] = useState(false);
   let token = localStorage.getItem("token");
-  const [isLogin, setIsLogin] = useState(token ? true : false);
+  const [isLogin, setIsLogin] = useState(!!token); // ✅ Set isLogin to true if token exists
   let user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    setIsLogin(token ? true : false);
+    setIsLogin(!!token); // ✅ Update isLogin when token changes
   }, [token]);
 
   //isOpen true or false -> check login function
@@ -22,7 +22,7 @@ export default function Navbar() {
     if (token) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      setIsLogin(false);
+      setIsLogin(false); // ✅ Set isLogin to false after logout
     } else {
       setIsOpen(true);
     }
@@ -44,7 +44,13 @@ export default function Navbar() {
             </li>
             <li
               className="nav_item"
-              onClick={() => !isLogin && setIsOpen(true)}
+              onClick={(e) => {
+                if (!isLogin) {
+                  // ✅ Only prevent if user is NOT logged in
+                  e.preventDefault();
+                  setIsOpen(true);
+                }
+              }}
             >
               {" "}
               <NavLink to="/myRecipe">My Recipes</NavLink>
@@ -66,8 +72,8 @@ export default function Navbar() {
           </ul>
         </nav>
         <div className="login_signup_container">
-          <button className="login_signup_box">
-            <p className="text_loginsignup" onClick={checkLogin}>
+          <button className="login_signup_box" onClick={checkLogin}>
+            <p className="text_loginsignup">
               {isLogin ? "Logout" : "Login"}
               {user?.email ? `(${user?.email})` : ""}
             </p>

@@ -19,12 +19,22 @@ const getAllRecipes = async () => {
   }
 };
 
+const getMyRecipes = async () => {
+  //getting user details from local storage
+  let user = JSON.parse(localStorage.getItem("user"));
+  //variable to store user recipes
+  let allRecipes = await getAllRecipes();
+  //filtering recipes based on user id
+  return allRecipes.filter((item) => item.createdBy === user._id);
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainNavigation />,
     children: [
       { path: "/", element: <Home />, loader: getAllRecipes },
+      { path: "/myRecipe", element: <Home />, loader: getMyRecipes },
       { path: "/addRecipe", element: <AddFoodRecipe /> },
       { path: "/myRecipe", element: <Home /> },
       { path: "/favRecipe", element: <Home /> },

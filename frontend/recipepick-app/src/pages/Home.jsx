@@ -7,6 +7,7 @@ import food4 from "../assets/food4.jpg";
 import { useNavigate } from "react-router-dom";
 import Model from "../components/Model";
 import InputForm from "../components/InputForm";
+import RecipeItems from "../components/RecipeItems";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -398,7 +399,10 @@ export default function Home() {
           </Model>
         )}
 
-        {/* recipe section */}
+        {/* recipeitems Component*/}
+        <div>
+          <RecipeItems />
+        </div>
       </>
     </>
   );
